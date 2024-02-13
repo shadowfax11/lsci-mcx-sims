@@ -9,7 +9,7 @@ Nc = 121;
 Nzr = 91; 
 
 unitinmm = 0.3;     % MCX simulation voxel size in mm
-Nz = floor(12/unitinmm); % we want to generate a kernel only for <= 8mm depth
+Nz = floor(12/unitinmm); % we want to generate a kernel only for <= 12mm depth
 
 % Scene description
 mu_a = 0.005;
@@ -22,11 +22,11 @@ Db = 0.5e-6;
 % Photon replay
 t_points    = 10; 
 EXPOSURE    = 5e-4;    % 500 us
-kernel      = zeros(Nr, Nc, Nz); 
+kernel      = zeros(Nr, Nc, Nzr); 
 Te          = EXPOSURE; 
 TAU         = linspace(0, Te, t_points); 
 
-for lx = 40 
+for lx = 61 
     % For one source-detector configuration
     % base simulation
     cfg.seed            = 0; 
@@ -39,7 +39,7 @@ for lx = 40
                             mu_a, mu_s, g, 1.37]; 
     cfg.srcpos          = [lx (Nc-1)/2+1 0]; 
     cfg.srctype         = 'disk'; 
-    cfg.srcparam1       = [10 0 0 0];        % radius of disk source
+    cfg.srcparam1       = [60 50 0 360];    % radius of disk source
     cfg.srcdir          = [0 0 1];          % pointing in z-direction    
     cfg.nphoton         = 1e9; 
     cfg.isreflect       = 0; 

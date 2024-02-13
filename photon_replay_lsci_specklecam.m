@@ -109,3 +109,7 @@ for kk=1:K
 %     save(fname,'kernel','scene','cfg','-v7.3');
     clearvars newcfg flux flux2 seeds2 detp2 seeds detp kappa w1 w2 kt cfg
 end
+
+% figure;
+% subplot(1,2,1); imagesc(squeeze(log10(kernel(40,1,:,:)))); axis image; colorbar; title("Jacobian @ z=0")
+% subplot(1,2,2); imagesc(squeeze(log10(kernel(40,:,:,61)))); axis image; colorbar; title("Jacobian @ y=61");
